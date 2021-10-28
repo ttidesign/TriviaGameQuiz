@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Intro () {
     return (
-        <div >
+        <>
             <h2>
                 Welcome to the Trivia Challenge!
             </h2>
@@ -12,8 +12,8 @@ function Intro () {
             </h4>
             <h4> Can you Score 100% </h4>
 
-            <button> BEGIN </button>
-        </div>
+            <Link to='/'> <button> BEGIN </button> </Link>
+        </>
     )
 }
 
