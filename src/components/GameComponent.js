@@ -65,7 +65,7 @@ function GameComponent() {
 		fetchQuestionsAPI();
 		// eslint-disable-next-line
 	}, []);
-
+    //if game end then render result page with variable passing down
 	if (gameEnd) {
 		return <Result score={score} userCorrectedAnswer={userCorrectedAnswer} questions={questions}> </Result>
 	} else {
