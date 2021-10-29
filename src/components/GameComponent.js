@@ -78,19 +78,19 @@ function GameComponent() {
 							{/*update map method to render each question at a time */}
 							{questions[currentQuestion].incorrect_answers.map(() => {
 								return (
-									<div key={currentQuestion}>
-										<h3> {questions[currentQuestion].category}</h3>
-										<div>
-											<p>{questions[currentQuestion].question}</p>
+									<div key={currentQuestion} >
+										<h1> {questions[currentQuestion].category}</h1>
+										<div className='question-box' >
+											<p className='intro-text'>{questions[currentQuestion].question}</p>
 										</div>
 										<div>
 											<p>
 												{currentQuestion} of {questions.length}
 											</p>
-											<button onClick={handleUserAnswer} value='True'>
+											<button className='general-button' onClick={handleUserAnswer} value='True'>
 												TRUE
 											</button>
-											<button onClick={handleUserAnswer} value='False'>
+											<button className='general-button' onClick={handleUserAnswer} value='False'>
 												FALSE
 											</button>
 										</div>

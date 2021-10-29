@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom'
 function Intro () {
     return (
         <>
-            <h2>
-                Welcome to the Trivia Challenge!
-            </h2>
-            <h4>
-                You will be presented with 10 True or False questions.
-            </h4>
-            <h4> Can you Score 100%? </h4>
+            <div>
+                <h1>
+                    Welcome to the Trivia Challenge!
+                </h1>
+                <p className='intro-text'>
+                    You will be presented with 10 True or False questions.
+                </p>
+                <p className='intro-text'> Can you score 100%? </p>
+            </div>
 
-            <Link to='/game'> <button> BEGIN </button> </Link>
+            <Link to='/game'> <button className='general-button'> BEGIN </button> </Link>
         </>
     )
 }

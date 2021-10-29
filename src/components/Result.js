@@ -5,12 +5,12 @@ function Result (props) {
     return (
 			<>
 				<div>
-					<p>You Scored:</p>
-					<p>{props.score} / {props.questions.length} </p>
+					<h2>You Scored:</h2>
+					<h2>{props.score} / {props.questions.length} </h2>
                     {props.userCorrectedAnswer.map((question) => {
                         return (
-                            <div key={props.userCorrectedAnswer.indexOf(question)} >
-                                <div>
+                            <div key={props.userCorrectedAnswer.indexOf(question)}>
+                                <div className='question-container'>
                                     <p>
                                         {question.question}
                                     </p>
@@ -22,7 +22,7 @@ function Result (props) {
                     })}
                                 <div> 
                                     <Link to='/'> 
-                                    <button> Play Again? </button>
+                                    <button className='general-button'> PLAY AGAIN? </button>
                                     </Link>
                                 </div>
 				</div>
