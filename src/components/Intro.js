@@ -10,9 +10,9 @@ function Intro () {
             <h4>
                 You will be presented with 10 True or False questions.
             </h4>
-            <h4> Can you Score 100% </h4>
+            <h4> Can you Score 100%? </h4>
 
-            <Link to='/'> <button> BEGIN </button> </Link>
+            <Link to='/game'> <button> BEGIN </button> </Link>
         </>
     )
 }

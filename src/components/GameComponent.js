@@ -22,6 +22,11 @@ const url =
     //if there's error then log it
     .catch(error =>console.log(error))
 }
+
+const handleUserAnswer = (event) => {
+    event.preventDefault()
+    console.log(event.target.value)
+}
 //check if questions return
 console.log(questions)
 useEffect(() => {
@@ -36,11 +41,22 @@ useEffect(() => {
                 {gameStart && (
                     <div>
                         {questions.results.map((question)=> {
-                            return(
-                                <div>
-                                    <p>{question.question}</p>
-                                </div>
-                            )
+                            return (
+															<div key={questions.question}>
+                                                                <h3> {question.category}</h3>
+																<div>
+																	<p>{question.question}</p>
+																</div>
+																<div>
+                                                                    <button onClick={handleUserAnswer} value='True'>
+                                                                        TRUE
+                                                                    </button>
+                                                                    <button onClick ={handleUserAnswer} value='False'>
+                                                                        FALSE
+                                                                    </button>
+                                                                </div>
+															</div>
+														);
                         })}
                     </div>
                 )}
