@@ -6,6 +6,8 @@ function GameComponent() {
 const [questions, setQuestions] = useState([])
 //assign score variable to store core
 const [score, setScore] = useState()
+//variable to check if game start
+const [gameStart, setGameStart] = useState(false)
 
 
 //function to fetch questions from api
@@ -14,7 +16,8 @@ const url =
 	'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean';
     fetch(url)
     .then((res)=>res.json())
-    .then((data)=> {setQuestions(data) ;console.log(data)})
+    //if api return array then set gameStart to true
+    .then((data)=> {setQuestions(data); setGameStart(true) ;console.log(data)})
     //checking if questions return correctly
     //if there's error then log it
     .catch(error =>console.log(error))
@@ -29,7 +32,18 @@ useEffect(() => {
 	return (
 		<>
 			<div>
-                Game component should show up
+                {/* if gameStart is true then render questions */}
+                {gameStart && (
+                    <div>
+                        {questions.results.map((question)=> {
+                            return(
+                                <div>
+                                    <p>{question.question}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                )}
             </div>
 		</>
 	);
