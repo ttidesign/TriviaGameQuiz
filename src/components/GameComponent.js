@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 function GameComponent() {
 	//assign questions variable for storing questions from api
@@ -10,7 +10,10 @@ function GameComponent() {
 	const [score, setScore] = useState(0);
 	//variable to check if game start
 	const [gameStart, setGameStart] = useState(false);
+	//variable to end the game
 	const [gameEnd, setGameEnd] = useState(false);
+    //variable to keep track of corrected answer 
+	const [userCorrectedAnswer, setUserCorrectedAnswer] = useState([]);
 
 	//function to fetch questions from api
 	const fetchQuestionsAPI = async () => {
@@ -23,35 +26,49 @@ function GameComponent() {
 				setQuestions(data.results);
 				setGameStart(true);
 			})
-			//checking if questions return correctly
-			//if there's error then log it
+			//checking if questions return correctly if there's error then log it
 			.catch((error) => console.log(error));
 	};
 
+    //function to handle user's response
 	const handleUserAnswer = (event) => {
 		event.preventDefault();
-		console.log(event.target.value, currentQuestion);
+        //if user answer correct then increase score, push to corrected answer array
 		if (event.target.value === questions[currentQuestion].correct_answer) {
 			setScore(score + 1);
-			console.log(score);
+			setUserCorrectedAnswer((correct) => [
+				...correct,
+				{
+					is_correct: 'Correct',
+					question: questions[currentQuestion].question,
+				},
+			]);
 		} else {
-			console.log('incorrect answer');
+			setUserCorrectedAnswer((correct) => [
+				...correct,
+				{
+					is_correct: 'Incorrect',
+					question: questions[currentQuestion].question,
+				},
+			]);
 		}
 		//check if current question is the last question, if not then increase question by 1
 		if (currentQuestion + 1 < questions.length) {
 			setCurrentQuestion(currentQuestion + 1);
+        //if game is end then navigate to result page    
 		} else {
 			setGameEnd(true);
 		}
 	};
 	//check if questions return
 	//console.log(questions)
+    console.log(userCorrectedAnswer)
 	useEffect(() => {
 		fetchQuestionsAPI();
 		// eslint-disable-next-line
 	}, []);
 	if (gameEnd) {
-		return <Redirect to='/result'/> ;
+		return <Redirect to='/result' />;
 	} else {
 		return (
 			<>
