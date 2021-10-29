@@ -1,10 +1,12 @@
 import {React} from 'react'
 
-function Result () {
+function Result (props) {
+    console.log(props.score, props.userCorrectedAnswer)
     return (
 			<>
 				<div>
-					<p> Game result </p>
+					<p>You Scored:</p>
+					<p>{props.score} / {props.questions.length} </p>
 				</div>
 			</>
 		);

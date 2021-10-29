@@ -1,12 +1,12 @@
 import { React, useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import Result from './Result';
 
 function GameComponent() {
-	//assign questions variable for storing questions from api
+	//variable for storing questions from api
 	const [questions, setQuestions] = useState([]);
 	//variable to keep track of current question and index
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	//assign score variable to store core
+	//variable to store core
 	const [score, setScore] = useState(0);
 	//variable to check if game start
 	const [gameStart, setGameStart] = useState(false);
@@ -60,15 +60,14 @@ function GameComponent() {
 			setGameEnd(true);
 		}
 	};
-	//check if questions return
-	//console.log(questions)
-    console.log(userCorrectedAnswer)
+
 	useEffect(() => {
 		fetchQuestionsAPI();
 		// eslint-disable-next-line
 	}, []);
+
 	if (gameEnd) {
-		return <Redirect to='/result' />;
+		return <Result score={score} userCorrectedAnswer={userCorrectedAnswer} questions={questions}> </Result>
 	} else {
 		return (
 			<>
