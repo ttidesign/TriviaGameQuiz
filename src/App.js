@@ -7,7 +7,12 @@ function App() {
 	return (
 		<div className='App'>
 			<Route exact path='/' component={Intro}></Route>
-			<Route exact path='/game' component={GameComponent}></Route>
+			<Route
+				exact
+				path='/game'
+				render={(routerProps) => {
+					return <GameComponent></GameComponent>;
+				}}/>
 		</div>
 	);
 }
