@@ -60,7 +60,7 @@ function GameComponent() {
 			setGameEnd(true);
 		}
 	};
-
+    //fetch questions api when page load
 	useEffect(() => {
 		fetchQuestionsAPI();
 		// eslint-disable-next-line
@@ -79,13 +79,13 @@ function GameComponent() {
 							{questions[currentQuestion].incorrect_answers.map(() => {
 								return (
 									<div key={currentQuestion} >
-										<h1> {questions[currentQuestion].category}</h1>
+										<h1 className='title'> {questions[currentQuestion].category}</h1>
 										<div className='question-box' >
 											<p className='intro-text'>{questions[currentQuestion].question}</p>
 										</div>
 										<div>
 											<p>
-												{currentQuestion} of {questions.length}
+												{currentQuestion +1} of {questions.length}
 											</p>
 											<button className='general-button' onClick={handleUserAnswer} value='True'>
 												TRUE
